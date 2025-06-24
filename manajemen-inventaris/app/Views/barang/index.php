@@ -539,8 +539,7 @@
         <i class="fas fa-plus mr-3"></i> Tambah Barang Pertama
       </a>
     </div>
-    <?php endif; ?> text-white rounded-lg border border-white/20 hover:bg-white/20 transition-all
-    duration-200">3</button>
+    <?php endif; ?>
     <button
       class="px-4 py-2 bg-white/10 text-white rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-200">
       Next<i class="fas fa-chevron-right ml-2"></i>

@@ -14,6 +14,13 @@ class Barang extends BaseController
 
     public function __construct()
     {
+        // Cek login
+        if (!session()->get('logged_in')) {
+            header('Location: ' . base_url('login'));
+            exit;
+        }
+
+        // Load model
         $this->barangModel = new BarangModel();
         $this->barangMasukModel = new BarangMasukModel();
         $this->barangKeluarModel = new BarangKeluarModel();
