@@ -26,9 +26,9 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-      'hostname' => '127.0.0.1:3307',
+      'hostname' => '127.0.0.1:3306',
 
-        'username'     => '',
+        'username'     => 'root',
         'password'     => '',
         'database'     => 'inventaris_db',
         'DBDriver'     => 'MySQLi',
@@ -42,7 +42,7 @@ class Database extends Config
         'compress'     => false,
         'strictOn'     => false,
         'failover'     => [],
-        'port'         => 3307,
+        'port'         => 3306,
         'numberNative' => false,
         'foundRows'    => false,
         'dateFormat'   => [

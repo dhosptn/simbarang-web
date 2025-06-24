@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 // Rute CRUD Barang
-$routes->get('/barang', 'Barang::index');
+$routes->get('/barang/index', 'Barang::index');
 $routes->get('/barang/create', 'Barang::create');
 $routes->post('/barang/store', 'Barang::store');
 $routes->get('/barang/edit/(:num)', 'Barang::edit/$1');

@@ -105,7 +105,7 @@
           </div>
         </div>
         <div class="hidden md:flex items-center space-x-6">
-          <a href="#" class="text-white/80 hover:text-white transition-colors duration-200">
+          <a href="/" class="text-white/80 hover:text-white transition-colors duration-200">
             <i class="fas fa-chart-bar mr-2"></i>Dashboard
           </a>
           <a href="#" class="text-white/80 hover:text-white transition-colors duration-200">
