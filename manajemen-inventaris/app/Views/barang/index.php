@@ -94,6 +94,7 @@
   <nav class="relative bg-white/10 backdrop-blur-md border-b border-white/20 sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
+        <!-- Logo dan Brand -->
         <div class="flex items-center space-x-3">
           <div
             class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
@@ -104,18 +105,23 @@
             <p class="text-white/70 text-sm">Management System</p>
           </div>
         </div>
+
+        <!-- Menu Desktop -->
         <div class="hidden md:flex items-center space-x-6">
-          <a href="/" class="text-white/80 hover:text-white transition-colors duration-200">
+          <a href="<?= base_url('/') ?>" class="text-white/80 hover:text-white transition-colors duration-200">
             <i class="fas fa-chart-bar mr-2"></i>Dashboard
           </a>
-          <a href="#" class="text-white/80 hover:text-white transition-colors duration-200">
-            <i class="fas fa-cog mr-2"></i>Settings
-          </a>
-          <div
-            class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
-            <i class="fas fa-user text-white text-sm"></i>
-          </div>
+
+          <!-- Form Logout dengan CSRF Protection -->
+          <form action="<?= base_url('logout') ?>" method="POST" class="inline">
+            <?= csrf_field() ?>
+            <button type="submit" class="text-white/80 hover:text-white transition-colors duration-200">
+              <i class="fas fa-sign-out-alt mr-2"></i>LogOut
+            </button>
+          </form>
         </div>
+
+        <!-- Tombol Mobile Menu -->
         <button class="md:hidden text-white">
           <i class="fas fa-bars text-xl"></i>
         </button>
@@ -225,22 +231,27 @@
     <!-- Search and Filter Section -->
     <div
       class="mb-6 bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-white/20 p-6 animate-slide-up">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex flex-col md:flex-row md:items-end gap-4">
         <!-- Search Input -->
-        <div class="relative flex-1">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <i class="fas fa-search text-white/50"></i>
+        <div class="flex-1">
+          <div class="relative">
+            <label for="searchInput" class="block text-sm font-medium text-white/80 mb-1">Cari Barang</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-search text-white/50"></i>
+              </div>
+              <input type="text" id="searchInput"
+                class="block w-full pl-10 pr-3 py-2 bg-white/5 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                placeholder="Cari barang..." onkeyup="filterTable()">
+            </div>
           </div>
-          <input type="text" id="searchInput"
-            class="block w-full pl-10 pr-3 py-2 bg-white/5 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-            placeholder="Cari barang..." onkeyup="filterTable()">
         </div>
 
         <!-- Category Filter -->
         <div class="flex-1">
           <label for="categoryFilter" class="block text-sm font-medium text-white/80 mb-1">Filter Kategori</label>
           <select id="categoryFilter"
-            class="block w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200"
+            class="block w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200"
             onchange="filterTable()">
             <option value="">Semua Kategori</option>
             <?php 
@@ -255,7 +266,7 @@
         <div class="flex-1">
           <label for="stockSort" class="block text-sm font-medium text-white/80 mb-1">Urutkan Stok</label>
           <select id="stockSort"
-            class="block w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
+            class="block w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
             onchange="sortTableByStock()">
             <option value="">Default</option>
             <option value="asc">Terendah ke Tertinggi</option>
@@ -264,11 +275,14 @@
         </div>
 
         <!-- Reset Button -->
-        <div class="flex items-end">
-          <button onclick="resetFilters()"
-            class="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 flex items-center">
-            <i class="fas fa-sync-alt mr-2"></i> Reset
-          </button>
+        <div class="flex-1 flex items-end">
+          <div class="w-full">
+            <label class="block text-sm font-medium text-white/80 mb-1 invisible">Reset</label>
+            <button onclick="resetFilters()"
+              class="w-full px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 flex items-center justify-center">
+              <i class="fas fa-sync-alt mr-2"></i> Reset
+            </button>
+          </div>
         </div>
       </div>
     </div>

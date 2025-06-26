@@ -41,9 +41,10 @@ class User extends BaseController
         }
     }
 
-    public function logout()
+    public function logout() 
     {
-        session()->destroy();
-        return redirect()->to('/login');
+        $session = session();
+        $session->destroy();
+        return redirect()->to('/');
     }
 }

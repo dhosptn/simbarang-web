@@ -16,6 +16,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'User::login');
 $routes->post('/login', 'User::login');
 $routes->get('/logout', 'User::logout');
+$routes->post('/logout', 'User::logout');
 
 
 // -----------------------------
