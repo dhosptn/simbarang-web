@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SimBarang - Sistem Manajemen Inventori Modern</title>
+  <link rel="icon" type="image/svg+xml" href="<?= base_url('favicon.svg') ?>">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
@@ -574,7 +575,7 @@
           <a href="#features" class="block py-2 hover:text-white transition-colors text-white">Fitur</a>
           <a href="#about" class="block py-2 hover:text-white transition-colors text-white">Tentang</a>
           <a href="#contact" class="block py-2 hover:text-white transition-colors text-white">Kontak</a>
-          <a href="<?= site_url('barang/index'); ?>"
+          <a href="<?= site_url('barang'); ?>"
             class="btn-gradient px-4 py-2 rounded-lg text-white font-medium inline-flex items-center space-x-2">
             <span>Gudang</span>
           </a>
@@ -1172,7 +1173,7 @@ window.onload = () => {
       <div class="animate-slide-up delay-200">
         <h3 class="text-lg font-semibold text-white mb-6">Produk</h3>
         <ul class="space-y-3">
-          <li><a href="barang/index" class="hover:text-purple-400">Gudang</a></li>
+          <li><a href="barang" class="hover:text-purple-400">Gudang</a></li>
           <li><a href="#" class="hover:text-purple-400">Manajemen Stok</a></li>
           <li><a href="#" class="hover:text-purple-400">Laporan Analytics</a></li>
           <li><a href="#" class="hover:text-purple-400">Barcode Scanner</a></li>
