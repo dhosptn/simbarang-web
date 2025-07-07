@@ -8,70 +8,70 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          primary: {
-            50: '#eff6ff',
-            100: '#dbeafe',
-            200: '#bfdbfe',
-            300: '#93c5fd',
-            400: '#60a5fa',
-            500: '#3b82f6',
-            600: '#2563eb',
-            700: '#1d4ed8',
-            800: '#1e40af',
-            900: '#1e3a8a',
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            secondary: {
+              500: '#6b7280',
+              600: '#4b5563',
+              700: '#374151',
+            },
+            success: {
+              500: '#10b981',
+              600: '#059669',
+            },
+            danger: {
+              500: '#ef4444',
+              600: '#dc2626',
+            }
           },
-          secondary: {
-            500: '#6b7280',
-            600: '#4b5563',
-            700: '#374151',
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
           },
-          success: {
-            500: '#10b981',
-            600: '#059669',
-          },
-          danger: {
-            500: '#ef4444',
-            600: '#dc2626',
+          boxShadow: {
+            card: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+            button: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
           }
-        },
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-        },
-        boxShadow: {
-          card: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-          button: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         }
       }
     }
-  }
   </script>
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0);
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
     }
 
-    50% {
-      transform: translateY(-5px);
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
     }
-  }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
   </style>
 </head>
 
@@ -101,33 +101,44 @@
       <!-- Card Body -->
       <div class="p-6 md:p-8">
         <!-- Success Message -->
-        <?php if(session()->getFlashdata('success')): ?>
-        <div class="bg-green-50 border-l-4 border-success-500 text-success-700 p-4 mb-6 rounded-lg flex items-start">
-          <i class="fas fa-check-circle text-success-500 mt-1 mr-3"></i>
-          <div>
-            <p class="font-medium"><?= session()->getFlashdata('success') ?></p>
+        <?php if (session()->getFlashdata('success')): ?>
+          <div class="bg-green-50 border-l-4 border-success-500 text-success-700 p-4 mb-6 rounded-lg flex items-start">
+            <i class="fas fa-check-circle text-success-500 mt-1 mr-3"></i>
+            <div>
+              <p class="font-medium"><?= session()->getFlashdata('success') ?></p>
+            </div>
           </div>
-        </div>
         <?php endif; ?>
 
         <!-- Error Messages -->
-        <?php if(isset($errors)): ?>
-        <div class="bg-red-50 border-l-4 border-danger-500 text-danger-700 p-4 mb-6 rounded-lg">
-          <div class="flex items-start">
-            <i class="fas fa-exclamation-circle mt-1 mr-3"></i>
-            <div>
-              <h3 class="font-bold text-lg">Terdapat kesalahan</h3>
-              <ul class="mt-2 space-y-1">
-                <?php foreach($errors as $error): ?>
-                <li class="flex items-start">
-                  <span class="mr-2">•</span>
-                  <span><?= esc($error) ?></span>
-                </li>
-                <?php endforeach; ?>
-              </ul>
+        <?php if (isset($errors)): ?>
+          <div class="bg-red-50 border-l-4 border-danger-500 text-danger-700 p-4 mb-6 rounded-lg">
+            <div class="flex items-start">
+              <i class="fas fa-exclamation-circle mt-1 mr-3"></i>
+              <div>
+                <h3 class="font-bold text-lg">Terdapat kesalahan</h3>
+                <ul class="mt-2 space-y-1">
+                  <?php foreach ($errors as $error): ?>
+                    <li class="flex items-start">
+                      <span class="mr-2">•</span>
+                      <span><?= esc($error) ?></span>
+                    </li>
+                  <?php endforeach; ?>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
+        <?php endif; ?>
+
+
+        <?php if (isset($errors)): ?>
+          <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
+            <ul class="list-disc pl-5">
+              <?php foreach ($errors as $error): ?>
+                <li><?= esc($error) ?></li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
         <?php endif; ?>
 
         <!-- Form -->
@@ -152,17 +163,23 @@
 
             <!-- Kategori -->
             <div>
-              <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
+              <label for="kategori_id" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
                 <i class="fas fa-layer-group text-primary-600 mr-2 text-sm"></i>
-                Kategori
+                Kategori <span class="text-red-500 ml-1">*</span>
               </label>
               <div class="mt-1 relative rounded-lg shadow-sm">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <i class="fas fa-folder text-gray-400"></i>
                 </div>
-                <input type="text" name="kategori" id="kategori"
-                  class="block w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 placeholder-gray-400 transition duration-300"
-                  placeholder="Contoh: Elektronik">
+                <select name="kategori_id" id="kategori_id" required
+                  class="block w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 text-gray-700 transition duration-300">
+                  <option value="">-- Pilih Kategori --</option>
+                  <?php foreach ($kategori as $k): ?>
+                    <option value="<?= $k['id'] ?>" <?= old('kategori_id') == $k['id'] ? 'selected' : '' ?>>
+                      <?= esc($k['nama_kategori']) ?>
+                    </option>
+                  <?php endforeach; ?>
+                </select>
               </div>
             </div>
 
@@ -200,17 +217,23 @@
 
             <!-- Lokasi -->
             <div class="col-span-2">
-              <label for="lokasi" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
+              <label for="lokasi_id" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
                 <i class="fas fa-map-marker-alt text-primary-600 mr-2 text-sm"></i>
-                Lokasi Penyimpanan
+                Lokasi Penyimpanan <span class="text-red-500 ml-1">*</span>
               </label>
               <div class="mt-1 relative rounded-lg shadow-sm">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <i class="fas fa-warehouse text-gray-400"></i>
                 </div>
-                <input type="text" name="lokasi" id="lokasi"
-                  class="block w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 placeholder-gray-400 transition duration-300"
-                  placeholder="Contoh: Rak A, Gudang Utama">
+                <select name="lokasi_id" id="lokasi_id" required
+                  class="block w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white focus:ring-primary-500 focus:border-primary-500 text-gray-700 transition duration-300">
+                  <option value="">-- Pilih Lokasi --</option>
+                  <?php foreach ($lokasi as $l): ?>
+                    <option value="<?= $l['id'] ?>" <?= old('lokasi_id') == $l['id'] ? 'selected' : '' ?>>
+                      <?= esc($l['nama_lokasi']) ?>
+                    </option>
+                  <?php endforeach; ?>
+                </select>
               </div>
             </div>
           </div>

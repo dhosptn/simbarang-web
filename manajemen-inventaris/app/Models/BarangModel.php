@@ -11,7 +11,7 @@ class BarangModel extends Model
     protected $table      = 'barang';
     protected $primaryKey = 'id';
 
-    protected $allowedFields = ['nama_barang', 'kategori', 'stok', 'satuan', 'lokasi'];
+    protected $allowedFields = ['nama_barang', 'kategori_id', 'stok', 'satuan', 'lokasi_id'];
 
     protected $useTimestamps = true;
 

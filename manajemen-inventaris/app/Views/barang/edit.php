@@ -8,18 +8,18 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          primary: {
-            600: '#2563eb',
-            700: '#1d4ed8',
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
           }
         }
       }
     }
-  }
   </script>
 </head>
 
@@ -45,28 +45,28 @@
       <!-- Card Body -->
       <div class="p-6">
         <!-- Success Message -->
-        <?php if(session()->getFlashdata('success')): ?>
-        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded">
-          <div class="flex items-center">
-            <i class="fas fa-check-circle mr-2"></i>
-            <p><?= session()->getFlashdata('success') ?></p>
+        <?php if (session()->getFlashdata('success')): ?>
+          <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded">
+            <div class="flex items-center">
+              <i class="fas fa-check-circle mr-2"></i>
+              <p><?= session()->getFlashdata('success') ?></p>
+            </div>
           </div>
-        </div>
         <?php endif; ?>
 
         <!-- Error Messages -->
-        <?php if(isset($errors)): ?>
-        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
-          <div class="flex items-center">
-            <i class="fas fa-exclamation-circle mr-2"></i>
-            <h3 class="font-bold">Terdapat kesalahan dalam pengisian form:</h3>
+        <?php if (isset($errors)): ?>
+          <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
+            <div class="flex items-center">
+              <i class="fas fa-exclamation-circle mr-2"></i>
+              <h3 class="font-bold">Terdapat kesalahan dalam pengisian form:</h3>
+            </div>
+            <ul class="mt-2 ml-6 list-disc">
+              <?php foreach ($errors as $error): ?>
+                <li><?= esc($error) ?></li>
+              <?php endforeach; ?>
+            </ul>
           </div>
-          <ul class="mt-2 ml-6 list-disc">
-            <?php foreach($errors as $error): ?>
-            <li><?= esc($error) ?></li>
-            <?php endforeach; ?>
-          </ul>
-        </div>
         <?php endif; ?>
 
         <!-- Form -->
@@ -84,11 +84,18 @@
 
           <!-- Kategori -->
           <div>
-            <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
+            <label for="kategori_id" class="block text-sm font-medium text-gray-700 mb-1">Kategori <span
+                class="text-red-500">*</span></label>
             <div class="mt-1 relative rounded-md shadow-sm">
-              <input type="text" name="kategori" id="kategori" value="<?= $barang['kategori'] ?>"
-                class="block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-                placeholder="Masukkan kategori">
+              <select name="kategori_id" id="kategori_id" required
+                class="block w-full px-4 py-2 border border-gray-300 rounded-md bg-white focus:ring-primary-500 focus:border-primary-500">
+                <option value="">-- Pilih Kategori --</option>
+                <?php foreach ($kategori as $k): ?>
+                  <option value="<?= $k['id'] ?>" <?= old('kategori_id', $barang['kategori_id']) == $k['id'] ? 'selected' : '' ?>>
+                    <?= esc($k['nama_kategori']) ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
             </div>
           </div>
 
@@ -116,11 +123,18 @@
 
           <!-- Lokasi -->
           <div>
-            <label for="lokasi" class="block text-sm font-medium text-gray-700 mb-1">Lokasi</label>
+            <label for="lokasi_id" class="block text-sm font-medium text-gray-700 mb-1">Lokasi <span
+                class="text-red-500">*</span></label>
             <div class="mt-1 relative rounded-md shadow-sm">
-              <input type="text" name="lokasi" id="lokasi" value="<?= $barang['lokasi'] ?>"
-                class="block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-                placeholder="Masukkan lokasi penyimpanan">
+              <select name="lokasi_id" id="lokasi_id" required
+                class="block w-full px-4 py-2 border border-gray-300 rounded-md bg-white focus:ring-primary-500 focus:border-primary-500">
+                <option value="">-- Pilih Lokasi --</option>
+                <?php foreach ($lokasi as $l): ?>
+                  <option value="<?= $l['id'] ?>" <?= old('lokasi_id', $barang['lokasi_id']) == $l['id'] ? 'selected' : '' ?>>
+                    <?= esc($l['nama_lokasi']) ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
             </div>
           </div>
 
